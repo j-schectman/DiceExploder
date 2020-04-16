@@ -23,7 +23,7 @@ class Die
             throw "Error, explosion rate must be greater than or equal to 0"
         end
         elsif(explosion_n == 0) then
-            return ( 1..(@sides - 1) ).map { |val|
+            return ( 1...(@sides) ).map { |val|
                 [val, @probability]
             }
         elsif(explosion_n > 0) then
@@ -33,7 +33,7 @@ class Die
 
     def get_explosion_range(explosions_n)
         explosion_prob = @probability ** (explosions_n + 1) 
-        return ( 1 + (@sides * explosions_n)..(@sides * (explosions_n + 1)) ).map {
+        return ( 1 + (@sides * explosions_n)...(@sides * (explosions_n + 1)) ).map {
             |val|
             [val, explosion_prob]
         }
