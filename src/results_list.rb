@@ -1,5 +1,8 @@
 
 class Result
+    attr_reader :probability
+    attr_reader :value
+
     def initialize(sides, probability, explosions, value = nil)
         @sides = sides
         @probability = probability
@@ -7,16 +10,8 @@ class Result
         @value = value == nil ? 1 : value
     end
 
-    def probability()
-        @probability 
-    end
-
     def explosion_die()
         @value % @sides == 0
-    end
-
-    def value()
-        @value
     end
 
     def next()
@@ -37,8 +32,8 @@ class ResultsList
         (@die.sides * (@explosions + 1)) - @explosions
     end
 
-    def each(&block)
-        enum = Enumerator.new(self.length) do |y|
+    def each
+        Enumerator.new(self.length) do |y|
             result = Result.new(@die.sides, @die.probability, @explosions)
             until result == nil do
                 if(result.explosion_die)
@@ -48,11 +43,5 @@ class ResultsList
                 result = result.next
             end
         end
-
-        if(block == nil) 
-            return enum
-        else
-            return enum.each { |val| }
-        end 
     end
 end

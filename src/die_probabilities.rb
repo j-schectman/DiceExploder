@@ -1,11 +1,6 @@
 
 class DieProbabilities
-    def initialize(dice, explosions)
-        @dice = dice
-        @explosions = explosions
-        @probabilitylist = @dice.map {|val| 
-
-        }
+    def initialize(dice)
     end
 
     def get_probabilities(explosions = 0)
