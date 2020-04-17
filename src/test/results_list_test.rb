@@ -29,7 +29,7 @@ describe ResultsList do
             assert_equal 6, @results.each.take(6).length
         end
 
-        it 'Returns a Result with a correct value' do
+        it 'Returns a ResultOld with a correct value' do
             bDie = Die.new(6)
             results = ResultsList.new(bDie)
             result = results.each.take(3)[2]

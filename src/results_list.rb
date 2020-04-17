@@ -1,5 +1,5 @@
 
-class Result
+class ResultOld
     attr_reader :probability
     attr_reader :value
 
@@ -17,7 +17,7 @@ class Result
     def next()
         if(@value < @sides * (@explosions + 1))
             probability = (self.explosion_die && @explosions > 0) ? Rational(1, @sides) * @probability : @probability
-            Result.new(@sides, probability, @explosions, @value + 1)
+            ResultOld.new(@sides, probability, @explosions, @value + 1)
         end
     end
 end
@@ -34,7 +34,7 @@ class ResultsList
 
     def each
         Enumerator.new(self.length) do |y|
-            result = Result.new(@die.sides, @die.probability, @explosions)
+            result = ResultOld.new(@die.sides, @die.probability, @explosions)
             until result == nil do
                 if(result.explosion_die)
                     result = result.next
