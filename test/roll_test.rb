@@ -1,6 +1,5 @@
 require 'minitest/autorun'
-require_relative '../roll.rb'
-require_relative '../die.rb'
+require_relative '../dice_exploder.rb'
 
 describe Roll do
     describe "Roll calculates odds correctly" do

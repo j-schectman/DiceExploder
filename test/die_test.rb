@@ -1,6 +1,5 @@
 require 'minitest/autorun'
-require_relative '../die.rb'
-require_relative '../result.rb'
+require_relative '../dice_exploder.rb'
 
 describe Die do
     describe "Die sets correct probability" do

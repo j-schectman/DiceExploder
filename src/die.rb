@@ -1,5 +1,3 @@
-# require './result.rb'
-
 class Die
     attr_reader :probability, :sides
     def initialize(sides)

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require './dice.rb'
+require File.expand_path(File.join(File.dirname(__FILE__), 'dice_exploder'))
 require 'optparse'
 
 explosions = nil
@@ -9,4 +9,11 @@ OptionParser.new do |opt|
     end
 end.parse!
 
-puts get_dice_probabilities(ARGV, explosions)
+die = ARGV.map { |x| Die.new(x.to_i) }
+
+exploder = ExplodingRoll.new(dice: die, explosions: explosions)
+
+puts exploder.get_distribution.reduce({}){|acc, current|
+    acc[current.value] = current + acc[current.value]
+    acc
+}.to_a
